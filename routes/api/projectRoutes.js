@@ -67,3 +67,15 @@ router.put('/:id', checkOwnership, async (req, res) => {
         res.status(500).json({ message: 'Server Error' })
     }
 })
+
+// DELETE /api/projects/:id @@ delete a project
+router.delete('/:id', checkOwnership, async (req, res) => {
+    try {
+        await Project.findByIdAndDelete(req.params.id)
+        res.json({ message: 'Project removed' })
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' })
+    }
+})
+
+module.exports = router
