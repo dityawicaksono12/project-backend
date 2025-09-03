@@ -53,3 +53,17 @@ const checkOwnership = async (req, res, next) => {
 router.get('/:id', checkOwnership, (req, res) => {
     res.json(req.project)
 })
+
+// PUT /api/projects/:id @@ update a project
+router.put('/:id', checkOwnership, async (req, res) => {
+    try {
+        const updatedProject = await Project.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        )
+        res.json(updatedProject)
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' })
+    }
+})
