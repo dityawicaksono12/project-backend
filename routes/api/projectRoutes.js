@@ -48,3 +48,8 @@ const checkOwnership = async (req, res, next) => {
         res.status(500).json({ message: 'Server Error' })
     }
 }
+
+// GET /api/projects/:id @@ get a single project
+router.get('/:id', checkOwnership, (req, res) => {
+    res.json(req.project)
+})
