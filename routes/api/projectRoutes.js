@@ -4,6 +4,8 @@ const { protect } = require('../../utils/auth')
 const Project = require('../../models/Project')
 const { rawListeners } = require('../../models/User')
 
+router.use(protect)
+
 // POST /api/projects @@ create a new project
 router.post('/', async (req, res) => {
     try {
