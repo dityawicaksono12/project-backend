@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { protect } = require('../../utils/auth')
 const Project = require('../../models/Project')
-const { rawListeners } = require('../../models/Users')
+const { rawListeners } = require('../../models/User')
 
 // POST /api/projects @@ create a new project
 router.post('/', async (req, res) => {
